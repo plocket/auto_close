@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Title name
-        run: echo 'The issue title is "' ${{ title }} '"'
+        run: echo 'The issue title is "' ${{ github.event.title }} '"'
         
   autoclose:
     runs-on: ubuntu-latest
