@@ -1,21 +1,22 @@
-name: Close empty issue
-
-# Controls when the action will run. Triggers the workflow on issue creation
+name: Autocloser
+# https://github.com/marketplace/actions/issue-title-checker
 on:
   issues:
     types: [opened]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  close_empty_issues:
+  echo_issu_title:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Close empty issue
-        run: echo 'The issue title is "' ${{ github.event.title }} '"'
-      - name: Echo title
-        if: ${{ contains(github.event.title, 'foo') }}
-        run: echo 'Title matched'
+      - name: Title name
+        run: echo 'The issue title is "${ issue.title }"'
         
-        
+  autoclose:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Autoclose issues whose title matched the specified regex
+      uses: IndyV/IssueChecker@v1.0
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-close-message: "This issue was automatically closed because it has no content"
+        issue-pattern: "foo"
