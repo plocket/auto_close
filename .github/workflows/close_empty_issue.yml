@@ -15,7 +15,7 @@ jobs:
       - name: Close empty issue
         run: echo 'The issue title is "' github.event.label.title '"'
       - name: Echo title
-        if: ${{ conatinas(github.event.label.title, 'foo') }}
+        if: ${{ contains(github.event.label.title, 'foo') }}
         run: echo 'Title matched'
         
         
