@@ -13,7 +13,7 @@ jobs:
     
     steps:
       - name: Close empty issue
-        run: echo 'The issue title is "' github.event.label.title '"'
+        run: echo 'The issue title is "' ${{ github.event.label.title }} '"'
       - name: Echo title
         if: ${{ contains(github.event.label.title, 'foo') }}
         run: echo 'Title matched'
