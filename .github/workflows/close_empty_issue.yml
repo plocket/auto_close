@@ -1,0 +1,19 @@
+name: Close empty issue
+
+# Controls when the action will run. Triggers the workflow on issue creation
+on:
+  issues:
+    types: [opened]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  close_empty_issues:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Close empty issue
+        run: echo 'The issue title is' github.event.label.title
+        if: conatinas(github.event.label.title, 'User: I'm looking for more help')
+        run: echo 'Title matched'
+        
