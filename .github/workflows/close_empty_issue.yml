@@ -13,9 +13,9 @@ jobs:
     
     steps:
       - name: Close empty issue
-        run: echo 'The issue title is "' ${{ github.event }} '"'
+        run: echo 'The issue title is "' ${{ github.event.title }} '"'
       - name: Echo title
-        if: ${{ contains(github.event, 'foo') }}
+        if: ${{ contains(github.event.title, 'foo') }}
         run: echo 'Title matched'
         
         
