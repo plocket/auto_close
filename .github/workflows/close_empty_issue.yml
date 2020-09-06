@@ -19,4 +19,4 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-close-message: "This issue was automatically closed because it has no content"
-        issue-pattern: "foo"
+        issue-pattern: "User: I'm looking for more help"
